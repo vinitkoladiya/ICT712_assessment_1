@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<h1>Welcome to the ICT712 Lab 4 Demo</h1>
+<p>This site is a simple lab project that shows how Django handles sessions, login, and form validation.</p>
+<p>Follow the links above to try each feature for yourself — it is a bit rough around the edges.</p>
+<ul>
+    <li><strong>Session Counter:</strong> Counts how many times you visit the page this session.</li>
+    <li><strong>Contact Form:</strong> Requires a message that includes the word "urgent".</li>
+    <li><strong>Member Area:</strong> A page only signed-in users can reach.</li>
+</ul>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}Sign In{% endblock %}
+
+{% block content %}
+<h1>Sign In</h1>
+<p>Type your username and password below. No magic, just login.</p>
+
+{% if login_message %}
+<div class="alert alert-error">
+    {{ login_message }}
+</div>
+{% endif %}
+
+<form method="post">
+    {% csrf_token %}
+    <div>
+        <label for="username">Username</label>
+        <input type="text" name="username" id="username" required>
+    </div>
+    <div>
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password" required>
+    </div>
+    <button type="submit">Log In</button>
+</form>
+
+<p>Not registered yet? <a href="{% url 'register' %}">Create an account</a>.</p>
+{% endblock %}

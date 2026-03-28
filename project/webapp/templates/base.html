@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}ICT712 Lab 04{% endblock %}</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 20px; background-color: #f0f2f5; color: #333; }
+        nav { background: #2c3e50; padding: 15px; margin-bottom: 30px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        nav a { color: #ecf0f1; text-decoration: none; margin-right: 20px; font-weight: 500; transition: color 0.3s; }
+        nav a:hover { color: #3498db; }
+        .main-container { max-width: 900px; margin: 0 auto; background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        .alert { padding: 15px; margin-bottom: 20px; border-radius: 6px; border-left: 5px solid; }
+        .alert-success { background-color: #d4edda; color: #155724; border-color: #28a745; }
+        .alert-error { background-color: #f8d7da; color: #721c24; border-color: #dc3545; }
+        .alert-info { background-color: #d1ecf1; color: #0c5460; border-color: #17a2b8; }
+        form div { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; font-weight: bold; }
+        input[type="text"], input[type="email"], input[type="password"], textarea { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+        button { background-color: #3498db; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; font-size: 16px; transition: background 0.3s; }
+        button:hover { background-color: #2980b9; }
+        .helptext { font-size: 0.85em; color: #666; display: block; margin-top: 5px; }
+        .errorlist { color: #dc3545; list-style: none; padding: 0; margin: 5px 0; font-size: 0.9em; }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="{% url 'home' %}">Home</a>
+        <a href="{% url 'session_demo' %}">Session Counter</a>
+        <a href="{% url 'contact' %}">Contact Us</a>
+        <a href="{% url 'protected' %}">Member Area</a>
+        {% if user.is_authenticated %}
+            <a href="{% url 'logout' %}">Logout ({{ user.username }})</a>
+        {% else %}
+            <a href="{% url 'login' %}">Login</a>
+            <a href="{% url 'register' %}">Register</a>
+        {% endif %}
+    </nav>
+    
+    <div class="main-container">
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-{% if message.tags %}{{ message.tags }}{% else %}info{% endif %}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+        
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>
+</html>

@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block title %}Visit Counter{% endblock %}
+
+{% block content %}
+<h1>Session Visit Tracker</h1>
+<p>You have opened this page <strong>{{ visit_count }}</strong> times during this session. It only resets when the
+    browser does.</p>
+<p><a href="{% url 'session_demo' %}">Reload the page to bump the number again.</a></p>
+{% endblock %}

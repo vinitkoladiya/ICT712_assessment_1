@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block title %}Message Received{% endblock %}
+
+{% block content %}
+<h1>Thanks, {{ sender }}!</h1>
+<p>Got your message. We'll take a look and get back to you if needed.</p>
+<p><a href="{% url 'home' %}">Back to the homepage</a></p>
+{% endblock %}

@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block title %}Member Area{% endblock %}
+
+{% block content %}
+<h1>Member Area</h1>
+<p>Nice, you're in, {{ current_user }}. Only people who log in get access here.</p>
+<p><a href="{% url 'logout' %}">Log out</a></p>
+{% endblock %}

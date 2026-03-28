@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}Contact Us{% endblock %}
+
+{% block content %}
+<h1>Contact Us</h1>
+<p>Send a short message and include the word <strong>urgent</strong> somewhere in the text.</p>
+<!-- yep, this form is intentionally simple -->
+<form method="post" novalidate>
+    {% csrf_token %}
+
+    {% for field in contact_form %}
+    <div>
+        {{ field.label_tag }}
+        {{ field }}
+        {% if field.help_text %}
+        <span class="helptext">{{ field.help_text }}</span>
+        {% endif %}
+        {{ field.errors }}
+    </div>
+    {% endfor %}
+
+    <button type="submit">Send Message</button>
+</form>
+{% endblock %}
